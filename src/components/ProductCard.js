@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { MdDeleteForever } from 'react-icons/md';
 import { MdEdit } from 'react-icons/md';
 import ProductEdit from './ProductEdit';
+import ProductContext from '../context/products';
 
-function ProductCard({ product, onDeleteProduct, onEditProduct }) {
+function ProductCard({ product }) {
+  const { onDeleteProduct, editProductById } = useContext(ProductContext);
   const { id, nama, deskripsi, imageURL } = product;
   const [jumlahProduct, setJumlahProduct] = useState(0);
   const [showEdit, setShowEdit] = useState(false);
@@ -18,7 +20,7 @@ function ProductCard({ product, onDeleteProduct, onEditProduct }) {
 
   const handleSubmit = (id, data) => {
     setShowEdit(false);
-    onEditProduct(id, data);
+    editProductById(id, data);
   };
 
   const cancelEdit = () => {

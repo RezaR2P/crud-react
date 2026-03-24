@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
+import ProductContext from '../context/products';
 
-function ProductCreate({ onCreateProduct }) {
+function ProductCreate() {
   const initialState = {
     nama: '',
     deskripsi: '',
@@ -24,6 +25,7 @@ function ProductCreate({ onCreateProduct }) {
   const handleShow = () => {
     setShowForm(!showForm);
   };
+  const { onCreateProduct } = useContext(ProductContext);
   return (
     <div className="product-create">
       <div className="toggle-add">
